@@ -1,0 +1,30 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "C:/Users/HP/Downloads/oops-lab/assignment 01/build",
+	"dir-cur-src" : "C:/Users/HP/Downloads/oops-lab/assignment 01",
+	"dir-top-bld" : "C:/Users/HP/Downloads/oops-lab/assignment 01/build",
+	"dir-top-src" : "C:/Users/HP/Downloads/oops-lab/assignment 01",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"C:\\Users\\HP\\Downloads\\oops-lab\\assignment 01"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "C:/Users/HP/Downloads/oops-lab/assignment 01/build/CMakeFiles/assignment_01.dir",
+	"sources" : 
+	{
+		"CMakeFiles/assignment_01.dir/main.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/HP/Downloads/oops-lab/assignment 01/main.cpp"
+		}
+	}
+}

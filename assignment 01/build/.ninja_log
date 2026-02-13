@@ -1,0 +1,12 @@
+# ninja log v7
+4	176	7927070552372830	CMakeFiles/assignment_01.dir/main.cpp.obj.ddi	621a06401ea3921d
+177	223	7927070554499799	CMakeFiles/assignment_01.dir/CXX.dd	379241e38c993c39
+177	223	7927070554499799	CMakeFiles/assignment_01.dir/CXXModules.json	379241e38c993c39
+177	223	7927070554499799	CMakeFiles/assignment_01.dir/main.cpp.obj.modmap	379241e38c993c39
+224	664	7927070554576313	CMakeFiles/assignment_01.dir/main.cpp.obj	3f2aa7d1130c718
+30	192	7927071027928881	CMakeFiles/assignment_01.dir/main.cpp.obj.ddi	621a06401ea3921d
+192	237	7927071029561780	CMakeFiles/assignment_01.dir/CXX.dd	379241e38c993c39
+192	237	7927071029561780	CMakeFiles/assignment_01.dir/CXXModules.json	379241e38c993c39
+192	237	7927071029561780	CMakeFiles/assignment_01.dir/main.cpp.obj.modmap	379241e38c993c39
+238	866	7927071029960079	CMakeFiles/assignment_01.dir/main.cpp.obj	3f2aa7d1130c718
+866	990	7927071036265552	assignment_01.exe	e19448db67fb1731

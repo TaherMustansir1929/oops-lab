@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/HP/Downloads/oops-lab/assignment 01/build",
+  "command": "C:\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/assignment_01.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\assignment_01.dir\\main.cpp.obj -c \"C:\\Users\\HP\\Downloads\\oops-lab\\assignment 01\\main.cpp\"",
+  "file": "C:/Users/HP/Downloads/oops-lab/assignment 01/main.cpp",
+  "output": "CMakeFiles/assignment_01.dir/main.cpp.obj"
+}
+]

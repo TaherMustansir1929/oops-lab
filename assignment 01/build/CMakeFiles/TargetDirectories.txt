@@ -1,0 +1,3 @@
+C:/Users/HP/Downloads/oops-lab/assignment 01/build/CMakeFiles/assignment_01.dir
+C:/Users/HP/Downloads/oops-lab/assignment 01/build/CMakeFiles/edit_cache.dir
+C:/Users/HP/Downloads/oops-lab/assignment 01/build/CMakeFiles/rebuild_cache.dir
