@@ -1,5 +1,4 @@
-#ifndef ADMIN_H
-#define ADMIN_H
+#pragma once
 
 #include "User.h"
 #include <iostream>
@@ -125,4 +124,3 @@ public:
     void incrementApprovedCount() { approvedCount++; }
 };
 
-#endif // ADMIN_H

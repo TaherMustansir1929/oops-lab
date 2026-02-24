@@ -1,5 +1,4 @@
-#ifndef MENU_H
-#define MENU_H
+#pragma once
 
 #include "App.h"
 #include <iostream>
@@ -432,4 +431,3 @@ inline void App::run() {
     menu.run();
 }
 
-#endif // MENU_H

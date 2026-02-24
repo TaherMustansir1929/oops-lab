@@ -1,5 +1,4 @@
-#ifndef CAR_H
-#define CAR_H
+#pragma once
 
 #include "Engine.h"
 #include "Insurance.h"
@@ -166,4 +165,3 @@ public:
     void setInsurance(const Insurance& ins) { insurance = ins; }
 };
 
-#endif // CAR_H

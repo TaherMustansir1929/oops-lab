@@ -1,5 +1,4 @@
-#ifndef USER_H
-#define USER_H
+#pragma once
 
 #include <iostream>
 #include <cstring>
@@ -158,4 +157,3 @@ public:
 // Initialize static member
 int User::userCount = 0;
 
-#endif // USER_H

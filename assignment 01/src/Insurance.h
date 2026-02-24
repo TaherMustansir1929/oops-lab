@@ -1,5 +1,4 @@
-#ifndef INSURANCE_H
-#define INSURANCE_H
+#pragma once
 
 #include <iostream>
 #include <cstring>
@@ -142,4 +141,3 @@ public:
     void setIsActive(bool active) { isActive = active; }
 };
 
-#endif // INSURANCE_H

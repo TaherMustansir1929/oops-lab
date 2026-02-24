@@ -1,5 +1,4 @@
-#ifndef MARKETPLACE_H
-#define MARKETPLACE_H
+#pragma once
 
 #include "Listing.h"
 #include "Message.h"
@@ -338,4 +337,3 @@ public:
     const char* getName() const { return name; }
 };
 
-#endif // MARKETPLACE_H

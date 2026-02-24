@@ -1,5 +1,4 @@
-#ifndef BUYER_H
-#define BUYER_H
+#pragma once
 
 #include "User.h"
 #include <iostream>
@@ -155,4 +154,3 @@ public:
     }
 };
 
-#endif // BUYER_H

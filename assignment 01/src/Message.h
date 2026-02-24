@@ -1,5 +1,4 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#pragma once
 
 #include <iostream>
 #include <cstring>
@@ -152,4 +151,3 @@ public:
 // Initialize static member
 int Message::nextMessageId = 0;
 
-#endif // MESSAGE_H

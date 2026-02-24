@@ -1,5 +1,4 @@
-#ifndef SELLER_H
-#define SELLER_H
+#pragma once
 
 #include "User.h"
 #include <iostream>
@@ -122,4 +121,3 @@ public:
     }
 };
 
-#endif // SELLER_H

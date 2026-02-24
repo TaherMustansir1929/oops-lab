@@ -1,5 +1,4 @@
-#ifndef APP_H
-#define APP_H
+#pragma once
 
 #include "Marketplace.h"
 #include "Admin.h"
@@ -284,4 +283,3 @@ inline void Buyer::sendMessage(Marketplace* marketplace, const char* receiverNam
 
 #include "Menu.h"  // Include Menu.h for App::run() definition
 
-#endif // APP_H

@@ -1,0 +1,439 @@
+@startuml CarMarketplaceUML
+
+skinparam classAttributeIconSize 0
+skinparam classFontSize 12
+skinparam classAttributeFontSize 10
+skinparam classFontStyle bold
+skinparam linetype ortho
+skinparam nodesep 60
+skinparam ranksep 60
+
+title Car Marketplace System - UML Class Diagram
+
+' ============================================
+' STANDALONE / LEAF CLASSES
+' ============================================
+
+class Engine {
+    - type : char*
+    - horsepower : int
+    - displacement : float
+    - fuelType : char*
+    - cylinders : int
+    - transmissionType : char*
+    __
+    + Engine()
+    + Engine(type, hp, disp, fuel, cyl, trans)
+    + Engine(const Engine&)
+    + ~Engine()
+    + operator=(const Engine&) : Engine&
+    + display() const : void
+    + isHighPerformance() const : bool
+    + getFuelEfficiencyRating() const : int
+    + compareWith(const Engine&) const : int
+    + getType() const : const char*
+    + getHorsepower() const : int
+    + getDisplacement() const : float
+    + getFuelType() const : const char*
+    + getCylinders() const : int
+    + getTransmissionType() const : const char*
+    + setType(const char*) : void
+    + setHorsepower(int) : void
+    + setDisplacement(float) : void
+    + setFuelType(const char*) : void
+    + setCylinders(int) : void
+    + setTransmissionType(const char*) : void
+}
+
+class Insurance {
+    - {field} policyNumber : const int
+    - provider : char*
+    - coverageType : char*
+    - premium : float
+    - expiryDate : char*
+    - isActive : bool
+    __
+    + Insurance()
+    + Insurance(policyNum, prov, coverage, prem, expiry, active)
+    + Insurance(const Insurance&)
+    + ~Insurance()
+    + operator=(const Insurance&) : Insurance&
+    + display() const : void
+    + isExpired() const : bool
+    + renew(const char*) : void
+    + calculatePremium() const : float
+    + getPolicyNumber() const : int
+    + getProvider() const : const char*
+    + getCoverageType() const : const char*
+    + getPremium() const : float
+    + getExpiryDate() const : const char*
+    + getIsActive() const : bool
+    + setProvider(const char*) : void
+    + setCoverageType(const char*) : void
+    + setPremium(float) : void
+    + setExpiryDate(const char*) : void
+    + setIsActive(bool) : void
+}
+
+class Message {
+    - messageId : int
+    - senderName : char*
+    - receiverName : char*
+    - content : char*
+    - timestamp : char*
+    - isRead : bool
+    - {static} nextMessageId : int
+    __
+    + Message()
+    + Message(sender, receiver, cont, time)
+    + Message(const Message&)
+    + ~Message()
+    + operator=(const Message&) : Message&
+    + display() const : void
+    + markAsRead() : void
+    + formatMessage() const : void
+    + isFromUser(const char*) const : bool
+    + getMessageId() const : int
+    + getSenderName() const : const char*
+    + getReceiverName() const : const char*
+    + getContent() const : const char*
+    + getTimestamp() const : const char*
+    + getIsRead() const : bool
+    + setSenderName(const char*) : void
+    + setReceiverName(const char*) : void
+    + setContent(const char*) : void
+    + setTimestamp(const char*) : void
+    + setIsRead(bool) : void
+}
+
+' ============================================
+' CAR CLASS (composes Engine + Insurance)
+' ============================================
+
+class Car {
+    - brand : char*
+    - model : char*
+    - year : int
+    - price : float
+    - mileage : int
+    - color : char*
+    - engine : Engine
+    - insurance : Insurance
+    __
+    + Car()
+    + Car(b, m, y, p, mil, col, eng, ins)
+    + Car(const Car&)
+    + ~Car()
+    + operator=(const Car&) : Car&
+    + display() const : void
+    + matchesFilter(brand, minY, maxY, minP, maxP) const : bool
+    + calculateDepreciation() const : float
+    + compareTo(const Car&) const : int
+    + getBrand() const : const char*
+    + getModel() const : const char*
+    + getYear() const : int
+    + getPrice() const : float
+    + getMileage() const : int
+    + getColor() const : const char*
+    + getEngine() const : const Engine&
+    + getInsurance() const : const Insurance&
+    + setBrand(const char*) : void
+    + setModel(const char*) : void
+    + setYear(int) : void
+    + setPrice(float) : void
+    + setMileage(int) : void
+    + setColor(const char*) : void
+    + setEngine(const Engine&) : void
+    + setInsurance(const Insurance&) : void
+}
+
+' ============================================
+' USER HIERARCHY (abstract base + 3 derived)
+' ============================================
+
+abstract class User {
+    - {field} userId : const int
+    - username : char*
+    - password : char*
+    - email : char*
+    - phone : char*
+    - isActive : bool
+    - {static} userCount : int
+    __
+    # setUsername(const char*) : void
+    + User()
+    + User(uname, pass, em, ph, active)
+    + User(const User&)
+    + {abstract} ~User()
+    + operator=(const User&) : User&
+    + {abstract} display() const : void
+    + authenticate(const char*) const : bool
+    + updateProfile(newEmail, newPhone) : void
+    + {abstract} getRole() const : const char*
+    + {static} getUserCount() : int
+    + getUserId() const : int
+    + getUsername() const : const char*
+    + getPassword() const : const char*
+    + getEmail() const : const char*
+    + getPhone() const : const char*
+    + getIsActive() const : bool
+    + setPassword(const char*) : void
+    + setEmail(const char*) : void
+    + setPhone(const char*) : void
+    + setIsActive(bool) : void
+}
+
+class Buyer {
+    - favorites : Listing**
+    - favoriteCount : int
+    - maxFavorites : int
+    - budget : float
+    - preferredBrand : char*
+    __
+    + Buyer()
+    + Buyer(uname, pass, em, ph, bud, brand, maxFav)
+    + Buyer(const Buyer&)
+    + ~Buyer()
+    + display() const : void
+    + getRole() const : const char*
+    + addFavorite(Listing*) : void
+    + removeFavorite(Listing*) : void
+    + viewFavorites() const : void
+    + sendMessage(Marketplace*, receiverName, content) : void
+    + getFavorites() const : Listing* const*
+    + getFavoriteCount() const : int
+    + getMaxFavorites() const : int
+    + getBudget() const : float
+    + getPreferredBrand() const : const char*
+    + setBudget(float) : void
+    + setPreferredBrand(const char*) : void
+}
+
+class Seller {
+    - shopName : char*
+    - rating : float
+    - totalSales : int
+    - address : char*
+    - sellerSince : char*
+    __
+    + Seller()
+    + Seller(uname, pass, em, ph, shop, rat, addr, since)
+    + Seller(const Seller&)
+    + ~Seller()
+    + display() const : void
+    + getRole() const : const char*
+    + createListing(Marketplace*, Car&, title, desc) : void
+    + updateListing(Marketplace*, listingId, newPrice, newDesc) : void
+    + deleteListing(Marketplace*, listingId) : void
+    + viewMyListings(const Marketplace*) const : void
+    + getShopName() const : const char*
+    + getRating() const : float
+    + getTotalSales() const : int
+    + getAddress() const : const char*
+    + getSellerSince() const : const char*
+    + setShopName(const char*) : void
+    + setRating(float) : void
+    + setTotalSales(int) : void
+    + incrementSales() : void
+    + setAddress(const char*) : void
+    + setSellerSince(const char*) : void
+}
+
+class Admin {
+    - adminLevel : int
+    - department : char*
+    - accessCode : char*
+    - lastLogin : char*
+    - approvedCount : int
+    __
+    + Admin()
+    + Admin(uname, pass, em, ph, level, dept, code)
+    + Admin(const Admin&)
+    + ~Admin()
+    + display() const : void
+    + getRole() const : const char*
+    + approveListing(Listing*) : void
+    + removeListing(Marketplace*, listingId) : void
+    + viewAllListings(const Marketplace*) const : void
+    + viewAllUsers(User* const*, userCount) const : void
+    + getAdminLevel() const : int
+    + getDepartment() const : const char*
+    + getAccessCode() const : const char*
+    + getLastLogin() const : const char*
+    + getApprovedCount() const : int
+    + setAdminLevel(int) : void
+    + setDepartment(const char*) : void
+    + setAccessCode(const char*) : void
+    + setLastLogin(const char*) : void
+    + incrementApprovedCount() : void
+}
+
+' ============================================
+' LISTING CLASS
+' ============================================
+
+class Listing {
+    - {field} listingId : const int
+    - car : Car
+    - {field} seller : Seller* const
+    - title : char*
+    - description : char*
+    - isApproved : bool
+    - datePosted : char*
+    - {static} listingCount : int
+    __
+    + Listing()
+    + Listing(car, seller, title, desc, date)
+    + Listing(const Listing&)
+    + ~Listing()
+    + operator=(const Listing&) : Listing&
+    + display() const : void
+    + approve() : void
+    + reject() : void
+    + updateDetails(newTitle, newDesc, newPrice) : void
+    + {static} getListingCount() : int
+    + getListingId() const : int
+    + getCar() const : const Car&
+    + getCar() : Car&
+    + getSeller() const : Seller*
+    + getTitle() const : const char*
+    + getDescription() const : const char*
+    + getIsApproved() const : bool
+    + getDatePosted() const : const char*
+    + setTitle(const char*) : void
+    + setDescription(const char*) : void
+    + setIsApproved(bool) : void
+    + setDatePosted(const char*) : void
+}
+
+' ============================================
+' MARKETPLACE CLASS
+' ============================================
+
+class Marketplace {
+    - listings : Listing**
+    - listingCount : int
+    - listingCapacity : int
+    - messages : Message**
+    - messageCount : int
+    - messageCapacity : int
+    - {field} name : const char* const
+    __
+    + Marketplace()
+    + Marketplace(marketName, initListingCap, initMessageCap)
+    + Marketplace(const Marketplace&)
+    + ~Marketplace()
+    + addListing(Listing*) : void
+    + removeListing(int) : bool
+    + searchByBrand(const char*) const : void
+    + searchByPriceRange(float, float) const : void
+    + filterByYear(int, int) const : void
+    + displayAllListings() const : void
+    + displayPendingListings() const : void
+    + addMessage(Message*) : void
+    + getMessagesForUser(const char*) const : void
+    + findListingById(int) const : Listing*
+    + getListingsBySeller(const char*) const : void
+    + getListings() const : Listing* const*
+    + getListingCount() const : int
+    + getListingCapacity() const : int
+    + getMessages() const : Message* const*
+    + getMessageCount() const : int
+    + getMessageCapacity() const : int
+    + getName() const : const char*
+}
+
+' ============================================
+' APP CLASS
+' ============================================
+
+class App {
+    - marketplace : Marketplace
+    - users : User**
+    - userCount : int
+    - userCapacity : int
+    - {field} appName : const char* const
+    - isInitialized : bool
+    __
+    + App()
+    + App(name, initUserCap)
+    + ~App()
+    + initialize() : void
+    + registerUser(User*) : void
+    + findUserByUsername(const char*) const : User*
+    + loginUser(const char*, const char*) const : User*
+    + run() : void
+    + cleanup() : void
+    + getMarketplace() : Marketplace&
+    + getMarketplace() const : const Marketplace&
+    + getUsers() const : User* const*
+    + getUserCount() const : int
+    + getAppName() const : const char*
+    + getIsInitialized() const : bool
+}
+
+' ============================================
+' MENU CLASS
+' ============================================
+
+class Menu {
+    - app : App*
+    - currentUser : User*
+    - isRunning : bool
+    - menuTitle : char*
+    __
+    + Menu(App*)
+    + ~Menu()
+    + showWelcome() : void
+    + handleAuth() : void
+    + handleLogin() : void
+    + handleRegisterSeller() : void
+    + handleRegisterBuyer() : void
+    + showAdminMenu() : void
+    + showSellerMenu() : void
+    + showBuyerMenu() : void
+    + handleCreateListing(Seller*) : void
+    + run() : void
+}
+
+' ============================================
+' RELATIONSHIPS
+' ============================================
+
+' --- Composition (filled diamond) ---
+' Car owns Engine and Insurance (value members, destroyed with Car)
+Car *-down- Engine : engine\n◆ Composition
+Car *-down- Insurance : insurance\n◆ Composition
+
+' Listing owns Car (value member, destroyed with Listing)
+Listing *-left- Car : car\n◆ Composition
+
+' Marketplace owns Listings and Messages (creates/deletes them)
+Marketplace *-down- Listing : listings[0..*]\n◆ Composition
+Marketplace *-down- Message : messages[0..*]\n◆ Composition
+
+' App owns Marketplace (value member)
+App *-left- Marketplace : marketplace\n◆ Composition
+
+' App owns Users (creates/deletes them)
+App *-down- User : users[0..*]\n◆ Composition
+
+' --- Aggregation (hollow diamond) ---
+' Listing references Seller but does NOT own it
+Listing o-right- Seller : seller\n◇ Aggregation
+
+' Buyer references Listings (favorites) but does NOT own them
+Buyer o-right- Listing : favorites[0..*]\n◇ Aggregation
+
+' Menu references App but does NOT own it
+Menu o-left- App : app\n◇ Aggregation
+
+' Menu references User (currentUser) but does NOT own it
+Menu o-down- User : currentUser\n◇ Aggregation
+
+' --- Inheritance ---
+Buyer -up-|> User
+Seller -up-|> User
+Admin -up-|> User
+
+@enduml

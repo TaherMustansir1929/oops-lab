@@ -1,5 +1,4 @@
-#ifndef LISTING_H
-#define LISTING_H
+#pragma once
 
 #include "Car.h"
 #include "Seller.h"
@@ -173,4 +172,3 @@ public:
 // Initialize static member
 int Listing::listingCount = 0;
 
-#endif // LISTING_H
